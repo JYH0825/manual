@@ -11,174 +11,166 @@
             --text-color: #c9d1d9;
             --accent-color: #58a6ff;
             --border-color: #30363d;
+            /* 카테고리별 포인트 컬러 */
+            --tag-gige: #1f6feb;
+            --tag-usb: #238636;
+            --tag-cxp: #9e6a03;
+            --tag-cameralink: #d03535;
+            --tag-grabber: #d29922;
+            --tag-sw: #8957e5;
+            --tag-support: #6e7681; /* Technical Support 전용 그레이-블루 */
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        body { font-family: -apple-system, sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        
+        .brand-container { position: absolute; top: 20px; right: 20px; text-align: right; z-index: 100; }
+        .brand-logo { width: 140px; height: auto; }
+        .camera-photo { width: 110px; height: auto; margin-top: 5px; opacity: 0.9; }
 
-        /* 우측 상단 브랜드 영역 */
-        .brand-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            text-align: right;
-            z-index: 10; /* 헤더보다 위에 표시 */
-        }
+        header { margin-top: 100px; text-align: center; width: 100%; padding: 20px; }
+        header h1 { font-size: 2.2rem; color: white; margin-bottom: 20px; }
 
-        .brand-logo {
-            width: 150px; /* 사이즈 조절 가능 */
-            height: auto;
-            margin-bottom: 5px;
-        }
+        .search-container { margin: 0 auto 30px; max-width: 600px; width: 90%; }
+        #searchInput { width: 100%; padding: 14px 25px; border-radius: 30px; border: 1px solid var(--border-color); background: var(--card-bg); color: white; font-size: 1rem; outline: none; transition: 0.3s; }
+        #searchInput:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3); }
 
-        .camera-photo {
-            width: 120px; /* 로고보다 약간 작게 설정 */
-            height: auto;
-            border-radius: 4px;
-        }
+        .filter-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; padding: 0 20px; }
+        .filter-btn { padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+        .filter-btn.active, .filter-btn:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); }
 
-        header {
-            margin-top: 100px; /* 브랜드 영역 확보를 위해 여백 늘림 */
-            text-align: center;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1200px; width: 92%; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding-bottom: 100px; }
+        
+        .manual-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-decoration: none; color: inherit; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .manual-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .manual-card h3 { margin: 0 0 12px 0; color: white; font-size: 1.2rem; }
+        .manual-card p { font-size: 0.9rem; color: #8b949e; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+        
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; width: fit-content; }
+        .tag.gige { background: var(--tag-gige); color: white; }
+        .tag.usb { background: var(--tag-usb); color: white; }
+        .tag.cxp { background: var(--tag-cxp); color: white; }
+        .tag.cameralink { background: var(--tag-cameralink); color: white; }
+        .tag.grabber { background: var(--tag-grabber); color: white; }
+        .tag.sw { background: var(--tag-sw); color: white; }
+        .tag.support { background: var(--tag-support); color: white; }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 10px;
-        }
+        footer { margin-top: auto; padding: 40px; color: #484f58; font-size: 0.85rem; border-top: 1px solid var(--border-color); width: 100%; text-align: center; }
 
-        header p {
-            color: #8b949e;
-            font-size: 1.1rem;
-        }
-
-        /* 매뉴얼 카드 그리드 */
-        .container {
-            max-width: 1000px;
-            width: 90%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding-bottom: 100px;
-        }
-
-        .manual-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .manual-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            background-color: #1c2128;
-        }
-
-        .manual-card h3 {
-            margin: 0 0 12px 0;
-            color: var(--accent-color);
-            font-size: 1.25rem;
-        }
-
-        .manual-card p {
-            font-size: 0.9rem;
-            color: #8b949e;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            background-color: #21262d;
-            border: 1px solid var(--border-color);
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 40px;
-            color: #484f58;
-            font-size: 0.8rem;
+        @media (max-width: 600px) {
+            .brand-container { position: static; text-align: center; margin-top: 20px; }
+            header { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="brand-container">
-        <img src="images/crevis_logo.jpg" alt="Crevis Logo" class="brand-logo">
+        <img src="images/crevis_logo.jpg" alt="Logo" class="brand-logo">
         <br>
-        <img src="images/gige%20camera.png" alt="Industrial Camera" class="camera-photo">
+        <img src="images/gige%20camera.png" alt="Camera" class="camera-photo">
     </div>
 
     <header>
         <h1>Crevis Manual Center</h1>
-        <p>크래비스 산업용 카메라 및 제어기 기술 문서 포털</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="filterManuals()" placeholder="제품명(model name), 인터페이스(interface), 키워드(Keyword)로 검색...">
+        </div>
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
+            <button class="filter-btn" onclick="filterCategory('GigE', this)">GigE Vision</button>
+            <button class="filter-btn" onclick="filterCategory('USB', this)">USB 3.0</button>
+            <button class="filter-btn" onclick="filterCategory('CXP', this)">CoaXpress</button>
+            <button class="filter-btn" onclick="filterCategory('CameraLink', this)">CameraLink</button>
+            <button class="filter-btn" onclick="filterCategory('Grabber', this)">Frame Grabber</button>
+            <button class="filter-btn" onclick="filterCategory('SW', this)">Software</button>
+            <button class="filter-btn" onclick="filterCategory('Support', this)">Technical Support</button> </div>
     </header>
 
-    <div class="container">
-        <a href="https://crevis-manual.github.io/cvsCamCtrl-manual/" class="manual-card">
-            <div>
-                <h3>cvsCamCtrl Manual</h3>
-                <p>cvsCamCtrl 소프트웨어 사용법 및 설정 안내 (국문)</p>
-            </div>
-            <span class="tag">Software / KR</span>
+    <div class="container" id="manualGrid">
+        <a href="https://crevis-manual.github.io/cvsCamCtrl-manual/" class="manual-card" data-category="SW" data-name="cvsCamCtrl" target="_blank" rel="noopener">
+            <h3>cvsCamCtrl Manual</h3>
+            <p>크래비스 카메라 소프트웨어 사용 가이드 (국문)</p>
+            <span class="tag sw">Software</span>
         </a>
 
-        <a href="https://crevis-manual.github.io/cvsCamCtrl-manual-en/" class="manual-card">
-            <div>
-                <h3>cvsCamCtrl Manual (EN)</h3>
-                <p>User guide and configuration for cvsCamCtrl software (English)</p>
-            </div>
-            <span class="tag">Software / EN</span>
+        <a href="https://crevis-manual.github.io/cvsCamCtrl-manual-en/" class="manual-card" data-category="SW" data-name="cvsCamCtrl" target="_blank" rel="noopener">
+            <h3>cvsCamCtrl Manual</h3>
+            <p>crevis camera software guide (ENG)</p>
+            <span class="tag sw">Software</span>
         </a>
 
-        <a href="https://crevis-manual.github.io/HG-A130SW/" class="manual-card">
-            <div>
-                <h3>HG-A130SW</h3>
-                <p>HG-A130SW 시리즈 하드웨어 사양 및 인터페이스 매뉴얼</p>
-            </div>
-            <span class="tag">Hardware</span>
+        <a href="#" class="manual-card" data-category="Support" data-name="FAQ Technical Support" target="_blank" rel="noopener">
+            <h3>Technical Support & FAQ</h3>
+            <p>자주 묻는 질문, 기술 문의 가이드 및 서비스 정책 안내</p>
+            <span class="tag support">Technical Support</span>
         </a>
 
-        <a href="https://crevis-manual.github.io/MG-A500M-K-FL/" class="manual-card">
-            <div>
-                <h3>MG-A500M-K-FL</h3>
-                <p>MG-A500M-K-FL 고해상도 카메라 기술 매뉴얼</p>
-            </div>
-            <span class="tag">Hardware</span>
+        <a href="https://crevis-manual.github.io/MG-A500M-K-FL/" class="manual-card" data-category="GigE" data-name="MG-A500M-K-FL" target="_blank" rel="noopener">
+            <h3>MG-A500M-K-FL</h3>
+            <p>5Mp GigE Vision Camera</p>
+            <span class="tag gige">GigE Vision</span>
         </a>
 
-        <a href="https://crevis-manual.github.io/MG-A241M-K-FL/" class="manual-card">
-            <div>
-                <h3>MG-A241M-K-FL</h3>
-                <p>MG-A241M-K-FL 카메라 하드웨어 및 설정 가이드</p>
-            </div>
-            <span class="tag">Hardware</span>
+        <a href="https://crevis-manual.github.io/MG-A241M-K-FL/" class="manual-card" data-category="GigE" data-name="MG-A241M-K-FL" target="_blank" rel="noopener">
+            <h3>MG-A241M-K-FL</h3>
+            <p>24.5Mp GigE Vision Camera</p>
+            <span class="tag gige">GigE Vision</span>
+        </a>
+
+        <a href="https://crevis-manual.github.io/HG-A130SW/" class="manual-card" data-category="GigE" data-name="HG-A130SW" target="_blank" rel="noopener">
+            <h3>HG-A130SW</h3>
+            <p>1.3Mp SWIR GigE Vision Camera</p>
+            <span class="tag gige">GigE Vision</span>
+        </a>
+
+        <a href="#" class="manual-card" data-category="CameraLink" data-name="CameraLink MC Series" target="_blank" rel="noopener">
+            <h3>CameraLink MC Series</h3>
+            <p>CameraLink 기반 카메라 제품군 기술 매뉴얼</p>
+            <span class="tag cameralink">CameraLink</span>
+        </a>
+
+        <a href="https://crevis-manual.github.io/CFG-X1204-Manual/" class="manual-card" data-category="Grabber" data-name="CFG-X1204" target="_blank" rel="noopener">
+            <h3>CFG-X1204</h3>
+            <p>4-CH CoaXpress Frame Grabber Hardware Manual</p>
+            <span class="tag grabber">Frame Grabber</span>
         </a>
     </div>
 
     <footer>
-        &copy; 2026 CREVIS Co., Ltd. All rights reserved.
+        &copy; 2026 CREVIS Co., Ltd. 전문 기술 지원 센터
     </footer>
 
+    <script>
+        function filterCategory(category, btn) {
+            const cards = document.querySelectorAll('.manual-card');
+            const btns = document.querySelectorAll('.filter-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        function filterManuals() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.manual-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+                if (name.includes(input) || category.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
