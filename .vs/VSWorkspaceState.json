@@ -4,9 +4,9 @@
     "\\manuals",
     "\\manuals\\cameras",
     "\\manuals\\cameras\\gige",
-    "\\manuals\\cameras\\gige\\MG-A241M-K-FL",
-    "\\manuals\\cameras\\gige\\MG-A500M-K-FL"
+    "\\manuals\\framegrabber",
+    "\\manuals\\framegrabber\\CFG-X1204"
   ],
-  "SelectedNode": "\\manuals\\cameras\\gige\\MG-A241M-K-FL",
+  "SelectedNode": "\\manuals\\framegrabber\\CFG-X1204",
   "PreviewInSolutionExplorer": false
 }
