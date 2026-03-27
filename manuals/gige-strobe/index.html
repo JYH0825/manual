@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카메라 Strobe User Manual | Rev 2.02 | Crevis</title>
+    <link rel="stylesheet" href="../MG-A500M-K-FL/css/style.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .sidebar .eyebrow {
+            margin: 0 0 8px;
+            color: #98c3eb;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+        .sidebar .rev {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(230, 126, 34, 0.15);
+            color: #ffd3ad;
+            font-size: 0.84rem;
+        }
+        .sidebar .back-link {
+            display: inline-block;
+            margin-bottom: 22px;
+            color: #d9e3ec;
+            text-decoration: none;
+            font-size: 0.92rem;
+        }
+        .sidebar li { margin: 8px 0; }
+        .sidebar .toc li > a::before {
+            content: none;
+        }
+        .sidebar .toc a[href="#strobe-advantages"],
+        .sidebar .toc a[href="#strobe-cautions"],
+        .sidebar .toc a[href="#photo-coupler"],
+        .sidebar .toc a[href="#gpio"],
+        .sidebar .toc a[href="#line-source"],
+        .sidebar .toc a[href="#line-inverter"],
+        .sidebar .toc a[href="#photo-coupler-wiring"],
+        .sidebar .toc a[href="#gpio-wiring"] {
+            padding-left: 18px;
+            font-size: 0.86rem;
+            color: #d5dde3;
+        }
+        .sidebar .toc a[href="#photo-coupler-pinmap"],
+        .sidebar .toc a[href="#photo-coupler-line-selector"],
+        .sidebar .toc a[href="#gpio-pinmap"],
+        .sidebar .toc a[href="#gpio-line-selector"],
+        .sidebar .toc a[href="#exposure-active"],
+        .sidebar .toc a[href="#timer-active"],
+        .sidebar .toc a[href="#user-output-active"],
+        .sidebar .toc a[href="#resistor-wiring"],
+        .sidebar .toc a[href="#smps-negative"],
+        .sidebar .toc a[href="#smps-positive"] {
+            padding-left: 34px;
+            font-size: 0.82rem;
+            color: #c6d0d8;
+        }
+        .content {
+            max-width: 1320px;
+        }
+        .header-box {
+            align-items: center;
+        }
+        .version-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .pill {
+            padding: 9px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: #fafcfd;
+            font-size: 0.9rem;
+        }
+        .hero-visual {
+            width: min(320px, 100%);
+            height: auto;
+            display: block;
+        }
+        .card,
+        .text-card,
+        .image-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            margin: 22px 0;
+        }
+        .image-card {
+            padding: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 24px;
+            align-items: start;
+            margin: 22px 0;
+        }
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin: 20px 0;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .image-card img,
+        .mini-shot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        .mini-shot {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .list,
+        .number-list {
+            margin: 0;
+            padding-left: 22px;
+        }
+        .list li,
+        .number-list li {
+            margin-bottom: 8px;
+        }
+        @media (max-width: 1100px) {
+            .two-col,
+            .three-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .sidebar .eyebrow,
+            .sidebar .rev,
+            .sidebar .back-link span {
+                display: none;
+            }
+            .header-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 720px) {
+            table { min-width: 480px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <h2>카메라 Strobe</h2>
+        <div class="rev">Rev 2.02</div>
+        <a class="back-link" href="../../index.html"><span>← Manual Center</span></a>
+        <ul class="toc">
+            <li><a href="#history"><span>HISTORY</span></a></li>
+            <li><a href="#strobe"><span>1. Strobe</span></a></li>
+            <li><a href="#strobe-advantages"><span>1.1. 장점</span></a></li>
+            <li><a href="#strobe-cautions"><span>1.2. 사용 시 주의 사항</span></a></li>
+            <li><a href="#difference"><span>2. Strobe 방식 별 차이</span></a></li>
+            <li><a href="#photo-coupler"><span>2.1. 포토커플러 방식</span></a></li>
+            <li><a href="#photo-coupler-pinmap"><span>2.1.1. Pin map</span></a></li>
+            <li><a href="#photo-coupler-line-selector"><span>2.1.2. Line Selector 설정</span></a></li>
+            <li><a href="#gpio"><span>2.2. GPIO 방식</span></a></li>
+            <li><a href="#gpio-pinmap"><span>2.2.1. Pin map</span></a></li>
+            <li><a href="#gpio-line-selector"><span>2.2.2. Line Selector 설정</span></a></li>
+            <li><a href="#camera-settings"><span>3. 카메라 설정</span></a></li>
+            <li><a href="#line-source"><span>3.2. Line Source 설정</span></a></li>
+            <li><a href="#exposure-active"><span>3.2.1. Exposure Active</span></a></li>
+            <li><a href="#timer-active"><span>3.2.2. Timer Active</span></a></li>
+            <li><a href="#user-output-active"><span>3.3.3. User Output Active</span></a></li>
+            <li><a href="#line-inverter"><span>3.3. Line Inverter 설정</span></a></li>
+            <li><a href="#wiring"><span>4. 배선도</span></a></li>
+            <li><a href="#photo-coupler-wiring"><span>4.1. Photo Coupler 방식</span></a></li>
+            <li><a href="#resistor-wiring"><span>4.1.1. 저항을 사용해 연결</span></a></li>
+            <li><a href="#smps-negative"><span>4.1.2. SMPS 음극에 연결</span></a></li>
+            <li><a href="#smps-positive"><span>4.1.3. SMPS 양극에 연결</span></a></li>
+            <li><a href="#gpio-wiring"><span>4.2. GPIO 방식</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <header class="header-box">
+            <div class="header-text">
+                <p class="category-label">User Manual</p>
+                <h1 class="model-title">카메라 Strobe</h1>
+                <p class="model-subtitle">카메라 Strobe 사용 매뉴얼</p>
+                <div class="version-strip">
+                    <div class="pill">Rev 2.02</div>
+                </div>
+            </div>
+            <div class="header-visual-group">
+                <img src="../MG-A500M-K-FL/images/crevis_logo.jpg" class="header-logo" alt="Crevis Logo">
+                <img src="assets/xref-4.png" alt="Crevis camera" class="header-camera-main">
+            </div>
+        </header>
+
+        <section id="history">
+            <h2>HISTORY</h2>
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rev</th>
+                                <th>Pages</th>
+                                <th>Remarks</th>
+                                <th>Date</th>
+                                <th>Editor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1.00</td><td>-</td><td>초안</td><td>24. 01. 17</td><td>JW Nam</td></tr>
+                            <tr><td>1.01</td><td>4</td><td>Trigger Mode와 관계 추가</td><td>25. 04. 02</td><td>JW Nam</td></tr>
+                            <tr><td>1.02</td><td>10</td><td>전체 디자인 수정, Line Inverter 추가</td><td>25. 07. 22</td><td>JW Nam</td></tr>
+                            <tr><td>1.03</td><td>-</td><td>포토커플러 방식, GPIO 방식 추가</td><td>25. 08. 25</td><td>JH G</td></tr>
+                            <tr><td>1.04</td><td>-</td><td>배선도 수정</td><td>25. 08. 26</td><td>JH G</td></tr>
+                            <tr><td>2.00</td><td>-</td><td>전체 디자인 수정</td><td>25. 10. 27</td><td>JW NAM</td></tr>
+                            <tr><td>2.01</td><td>11</td><td>풀업저항 계산 식 수정, 배선 변경</td><td>25. 12. 26</td><td>JW NAM</td></tr>
+                            <tr><td>2.02</td><td>5</td><td>포토커플러 방식과 GPIO방식 구분</td><td>25. 12. 29</td><td>JW NAM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="strobe">
+            <h2>1. Strobe</h2>
+            <div class="card">
+                <p>Strobe는 영상 촬영에 맞춰 조명을 사용하는 기능입니다.</p>
+                <p>카메라 별로 Photo Copluer 방식 또는 GPIO 방식이 있어 사용하고자 하는 Strobe 방식이 어떤 방식인지 확인이 필요합니다.</p>
+
+                <h3 id="strobe-advantages">1.1. 장점</h3>
+                <ol class="number-list">
+                    <li>상시 조명에 비해 전기를 적게 사용합니다.</li>
+                    <li>조명 수명이 연장됩니다.</li>
+                    <li>Exposure Time을 줄여 고속 촬영에 용이해집니다.</li>
+                </ol>
+
+                <h3 id="strobe-cautions">1.2. 사용 시 주의 사항</h3>
+                <ul class="list">
+                    <li>현장 작업자가 있는 경우 점멸로 인한 눈 피로도 증가하기 때문에 암막 처리를 권장합니다.</li>
+                    <li>배선 작업 이후 User Output Active로 배선이 정확히 이루어 졌는지 테스트 해보시길 바랍니다.</li>
+                    <li>Strobe는 Trigger Mode와 관련 없이 Trigger Mode = OFF에도 발생합니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="difference">
+            <h2>2. Strobe 방식 별 차이</h2>
+
+            <h3 id="photo-coupler">2.1. 포토커플러 방식</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>포토커플러 방식 Strobe는 외부 전압을 인가 받아 사용합니다.</p>
+                    <h3 id="photo-coupler-pinmap">2.1.1. Pin map</h3>
+                    <p>사용자는 카메라 Pin map에 맞게 Strobe 배선을 진행해야 합니다.</p>
+                    <p>※ 카메라 Pin map은 제품마다 다르므로 자세한 정보는 제품 매뉴얼을 참조 바랍니다.</p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pin No.</th>
+                                    <th>Name</th>
+                                    <th>IN /OUT</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>POWER IN +</td><td>IN</td><td>10.8V ~ 13V Input Range</td></tr>
+                                <tr><td>2</td><td>TRIG_IN +</td><td>IN</td><td>Opto-Isolated Trigger Input + (3.3V ~ 24V)</td></tr>
+                                <tr><td>3</td><td>STROBE_OUT -</td><td>OUT</td><td>Opto-Isolated Strobe Output -</td></tr>
+                                <tr><td>4</td><td>STROBE_OUT +</td><td>OUT</td><td>Opto-Isolated Strobe Output +</td></tr>
+                                <tr><td>5</td><td>TRIG_IN -</td><td>IN</td><td>Opto Isolated Trigger Input -</td></tr>
+                                <tr><td>6</td><td>GND</td><td>IN</td><td>GND</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>※ Strobe Signal은 외부 전원 Max 30V까지 지원합니다.</p>
+
+                    <h3 id="photo-coupler-line-selector">2.1.2. Line Selector 설정</h3>
+                    <p>Strobe에 대한 설정을 변경하기 위해 Line Selector를 Output Line으로 설정합니다.</p>
+                    <p>※ 카메라 모델에 따라 Line이 다를 수 있어 정확한 Line은 제품 매뉴얼 확인이 필요합니다.</p>
+                </div>
+                <div>
+                    <div class="image-card">
+                        <img src="assets/xref-19.png" alt="6 pin connector pin map">
+                        <div class="caption">포토커플러 방식 Pin map</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-20.png" alt="Line Selector Output">
+                        <div class="caption">Line Selector: `Line 2`, Line Mode: `Output`</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="gpio">2.2. GPIO 방식</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>GPIO 방식 Strobe는 카메라 내부에서 전압을 만들어 출력합니다.</p>
+                    <h3 id="gpio-pinmap">2.2.1. Pin map</h3>
+                    <p>사용자는 카메라 Pin map에 맞게 Strobe 배선을 진행해야 합니다.</p>
+                    <p>※ 카메라 Pin map은 제품마다 다르므로 자세한 정보는 제품 매뉴얼을 참조 바랍니다.</p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pin No.</th>
+                                    <th>Name</th>
+                                    <th>IN /OUT</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>POWER IN +</td><td>IN</td><td>10.8V ~ 13V Input Range</td></tr>
+                                <tr><td>2</td><td>TRIG_IN +</td><td>IN</td><td>Opto-Isolated Trigger Input + (3.3V ~ 24V)</td></tr>
+                                <tr><td>3</td><td>GPIO 1</td><td>IN / OUT</td><td>General Purpose I/O 1</td></tr>
+                                <tr><td>4</td><td>GPIO 2</td><td>IN / OUT</td><td>General Purpose I/O 2</td></tr>
+                                <tr><td>5</td><td>TRIG_IN -</td><td>IN</td><td>Opto Isolated Trigger Input -</td></tr>
+                                <tr><td>6</td><td>GND</td><td>IN</td><td>GND</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 id="gpio-line-selector">2.2.2. Line Selector 설정</h3>
+                    <p>GPIO 방식은 원하는 Line을 선택한 뒤 해당 Line의 동작 방법(Input/Output)을 선택해야 합니다.</p>
+                    <p>※ 카메라 모델에 따라 Line이 다를 수 있어 정확한 Line은 제품 매뉴얼 확인이 필요합니다.</p>
+                </div>
+                <div class="image-grid">
+                    <div class="mini-shot">
+                        <img src="assets/xref-26.png" alt="GPIO line mode input output">
+                        <div class="caption">GPIO Line 선택 후 Input/Output 지정</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-77.png" alt="GPIO output circuit">
+                        <div class="caption">GPIO 출력 회로 예시</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="camera-settings">
+            <h2>3. 카메라 설정</h2>
+            <div class="card">
+                <p>카메라에서 Strobe 기능을 사용하기 위해서는 추가적인 설정이 필요합니다.</p>
+                <p id="line-source">3.2. Line Source 설정</p>
+                <p>Strobe를 동작 시킬 Source를 설정합니다.</p>
+            </div>
+
+            <h3 id="exposure-active">3.2.1. Exposure Active</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>설정한 Exposure Time 만큼 Strobe가 동작합니다.</p>
+                    <p>※ 카메라 모델에 따라 Exposure전 절대적인 딜레이가 존재하며, 해당 수치는 제품 매뉴얼 확인이 필요합니다.</p>
+                    <ol class="number-list">
+                        <li>Line Source를 Exposure Active로 설정합니다.</li>
+                        <li>설정한 Exposure Time 만큼 Strobe 신호가 출력 됩니다. (단위 : us)</li>
+                    </ol>
+                </div>
+                <div class="three-grid">
+                    <div class="mini-shot">
+                        <img src="assets/xref-32.png" alt="Digital IO Control Exposure Active">
+                        <div class="caption">Digital IO Control</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-31.png" alt="Line Source Exposure Active">
+                        <div class="caption">Line Source: `Exposure Active`</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-33.png" alt="Exposure time setting">
+                        <div class="caption">Acquisition Control</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="timer-active">3.2.2. Timer Active</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>설정한 Timer 만큼 Strobe가 동작합니다.</p>
+                    <ol class="number-list">
+                        <li>Line Source를 Timer Active로 설정합니다.</li>
+                        <li>설정한 Timer Duration 만큼 Strobe 신호가 출력 됩니다. (단위 : us)</li>
+                        <li>Timer Trigger Source로 타이머의 시작 시점을 설정합니다.</li>
+                    </ol>
+                    <p>※ Freerun Mode 사용 중에는 Exposure Start, Internal VD Start만 사용 가능합니다.</p>
+                    <ul class="list">
+                        <li>Exposure Start : 노광이 시작되는 시점</li>
+                        <li>Acquisition Trigger : 외부 트리거의 입력 시점</li>
+                        <li>Internal VD Start : Freerun 모드에서의 Internal VD 리셋 시점</li>
+                        <li>PWC Trigger Start : 카메라 내부에서 변환된 PWC Trigger 신호 시점</li>
+                    </ul>
+                </div>
+                <div class="image-grid">
+                    <div class="mini-shot">
+                        <img src="assets/xref-40.png" alt="Digital IO Timer Active">
+                        <div class="caption">Line Source: `Timer Active`</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-41.png" alt="Timer Duration">
+                        <div class="caption">Timer Duration / Timer Trigger Source</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-42.png" alt="Timer Trigger Source options">
+                        <div class="caption">Timer Trigger Source 옵션</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="user-output-active">3.2.3. User Output Active</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>사용자가 Strobe를 직접 동작합니다.</p>
+                    <p>※ User Output Active 기능은 실제 촬영과 동기를 맞추기 어렵기 때문에 배선 테스트 용도로만 사용하시길 권장 드립니다.</p>
+                    <ol class="number-list">
+                        <li>Line Source를 User Output으로 설정합니다.</li>
+                        <li>User Output Value를 True로 설정 시 Strobe 신호가 출력 됩니다.</li>
+                    </ol>
+
+                    <h3 id="line-inverter">3.3. Line Inverter 설정</h3>
+                    <p>출력 신호의 상을 반전 시키는 기능입니다.</p>
+                    <p>주로 조명 컨트롤러 사양에 맞춰 사용하거나 노이즈를 회피할 때 사용합니다.</p>
+                </div>
+                <div class="image-grid">
+                    <div class="mini-shot">
+                        <img src="assets/xref-49.png" alt="User Output selected">
+                        <div class="caption">Line Source: `User Output 1`</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-50.png" alt="User Output Value True">
+                        <div class="caption">User Output Value: `True`</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-51.png" alt="Line Inverter">
+                        <div class="caption">Line Inverter 설정</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wiring">
+            <h2>4. 배선도</h2>
+
+            <h3 id="photo-coupler-wiring">4.1. Photo Coupler 방식 (GigE 카메라)</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>풀업 저항 사용 및 다양한 배선 방법을 사용 할 수 있습니다.</p>
+                    <p>※ 조명 컨트롤러 사양에 따라 다를 수 있습니다.</p>
+                    <p>▼ 카메라 내부</p>
+                    <p>▼ 조명 컨트롤러 내부 예시</p>
+                </div>
+                <div class="image-card">
+                    <img src="assets/xref-58.png" alt="Photo Coupler output circuit">
+                    <div class="caption">Photo Coupler 방식 내부 출력 예시</div>
+                </div>
+            </div>
+
+            <h3 id="resistor-wiring">4.1.1. 저항을 사용해 연결</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>노이즈가 심한곳에서 사용 권장합니다.</p>
+                    <p>※ 아래 내용은 예시로서 현장 상황에 따라 다를 수 있습니다.</p>
+                    <p>※ 조명 컨트롤러가 Output을 지원 할 시, SMPS 대신 조명 컨트롤러에서 출력하는 Power를 사용해도 됨</p>
+                    <p>ex) 풀업 저항 : R = V / A  (24V / 5mA → 4.8Kohm)</p>
+                </div>
+                <div class="image-grid">
+                    <div class="mini-shot">
+                        <img src="assets/xref-59.png" alt="Trigger input circuit">
+                        <div class="caption">관련 입력 회로 예시</div>
+                    </div>
+                    <div class="mini-shot">
+                        <img src="assets/xref-66.png" alt="Pull up resistor wiring">
+                        <div class="caption">저항을 사용해 연결</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="smps-negative">4.1.2. SMPS 음극에 연결</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>SMPS 음극에 카메라를 연결해 스위치로 사용하는 배선 입니다.</p>
+                    <p>※ 아래 내용은 예시로서 현장 상황에 따라 다를 수 있습니다.</p>
+                    <p>※ 조명 컨트롤러가 Output을 지원 할 시, SMPS 대신 조명 컨트롤러에서 출력하는 Power를 사용해도 됨</p>
+                </div>
+                <div class="image-card">
+                    <img src="assets/xref-65.png" alt="SMPS negative wiring">
+                    <div class="caption">SMPS 음극에 연결</div>
+                </div>
+            </div>
+
+            <h3 id="smps-positive">4.1.3. SMPS 양극에 연결</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>SMPS 양극에 카메라를 연결해 스위치로 사용하는 배선 입니다.</p>
+                    <p>※ 아래 내용은 예시로서 현장 상황에 따라 다를 수 있습니다.</p>
+                    <p>※ 조명 컨트롤러가 Output을 지원 할 시, SMPS 대신 조명 컨트롤러에서 출력하는 Power를 사용해도 됨</p>
+                </div>
+                <div class="image-card">
+                    <img src="assets/xref-72.png" alt="SMPS positive wiring">
+                    <div class="caption">SMPS 양극에 연결</div>
+                </div>
+            </div>
+
+            <h3 id="gpio-wiring">4.2. GPIO 방식(USB, CL, CXP 카메라)</h3>
+            <div class="two-col">
+                <div class="text-card">
+                    <p>GPIO에서 3.3V가 출력 되기 때문에 조명 컨트롤러와 직접 연결해 사용 가능합니다.</p>
+                    <p>※ 조명 컨트롤러 사양에 따라 다를 수 있습니다.</p>
+                    <p>▼ 카메라 내부</p>
+                    <p>▼ 조명 컨트롤러 내부 예시</p>
+                </div>
+                <div class="image-card">
+                    <img src="assets/xref-77.png" alt="GPIO output circuit detail">
+                    <div class="caption">GPIO 방식 출력 회로 참고 이미지</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Crevis Technology Co., Ltd. All rights reserved.<br>
+            This HTML manual is composed from <strong>CREVIS_UserManual_카메라Strobe_v2.02_KR.pdf</strong>.
+        </footer>
+    </div>
+</body>
+</html>
