@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>CFG-X1204 Hardware Manual</title>
     <style>
-        :root { --primary-color: #2c3e50; --accent-color: #e67e22; --sidebar-bg: #f8f9fa; --border-color: #dee2e6; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; display: flex; margin: 0; line-height: 1.6; color: #333; background: #fff; }
+        :root { color-scheme: light dark; --primary-color: #2c3e50; --accent-color: #e67e22; --sidebar-bg: #f8f9fa; --border-color: #dee2e6; --surface-bg: #fff; --panel-bg: #fff; --muted-bg: #f1f3f5; --text-color: #333; --subtle-text: #555; --footer-text: #777; --shadow-color: rgba(0,0,0,0.08); }
+        body { font-family: 'Segoe UI', Arial, sans-serif; display: flex; margin: 0; line-height: 1.6; color: var(--text-color); background: var(--surface-bg); }
         
         /* 사이드바 스타일 */
         .sidebar { width: 320px; height: 100vh; background: var(--sidebar-bg); border-right: 1px solid var(--border-color); position: fixed; padding: 25px; overflow-y: auto; box-sizing: border-box; }
         .sidebar h2 { font-size: 1.2rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-bottom: 20px; }
         .sidebar ul { list-style: none; padding: 0; }
         .sidebar li { margin: 10px 0; }
-        .sidebar a { text-decoration: none; color: #555; font-size: 0.9rem; transition: 0.2s; }
+        .sidebar a { text-decoration: none; color: var(--subtle-text); font-size: 0.9rem; transition: 0.2s; }
         .sidebar a:hover { color: var(--accent-color); padding-left: 5px; }
         .sidebar .back-link { display: inline-block; margin-bottom: 22px; color: var(--primary-color); font-size: 0.92rem; }
         .sidebar .sub-item { padding-left: 15px; font-size: 0.85rem; }
@@ -33,10 +33,10 @@
     height: auto;
     display: block;
     margin: 30px auto;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    background-color: #fff;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    background-color: var(--panel-bg);
 }
 
 /* --- 새로 추가할 이미지 크기 조절용 유틸리티 클래스 --- */
@@ -54,24 +54,34 @@
 .img-caption {
     text-align: center;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--footer-text);
     margin-top: -20px;
     margin-bottom: 30px;
 }
         /* 테이블 스타일 */
         table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.9rem; border: 1px solid var(--border-color); }
         th, td { border: 1px solid var(--border-color); padding: 12px 15px; text-align: left; }
-        th { background: #f1f3f5; font-weight: 700; color: #2c3e50; }
-        tr:nth-child(even) { background: #fafafa; }
+        th { background: var(--muted-bg); font-weight: 700; color: var(--primary-color); }
+        tr:nth-child(even) { background: color-mix(in srgb, var(--surface-bg) 92%, var(--primary-color) 8%); }
 
         /* 알림 박스 스타일 */
         .box { padding: 20px; border-left: 6px solid; margin: 30px 0; border-radius: 4px; font-size: 0.95rem; }
         .caution { background: #fff9db; border-color: #fab005; color: #856404; }
         .warning { background: #fff4e6; border-color: #fd7e14; color: #d9480f; }
         .danger { background: #fff5f5; border-color: #ff6b6b; color: #c92a2a; }
-        .note { background: #f1f3f5; border-color: #adb5bd; color: #495057; }
+        .note { background: var(--muted-bg); border-color: #adb5bd; color: #495057; }
 
-        footer { margin-top: 100px; padding-top: 30px; border-top: 1px solid #eee; font-size: 0.9rem; color: #777; text-align: center; }
+        footer { margin-top: 100px; padding-top: 30px; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--footer-text); text-align: center; }
+
+        @media (prefers-color-scheme: dark) {
+            :root { --primary-color: #e5edf5; --accent-color: #ff9a3c; --sidebar-bg: #0f141a; --border-color: #2b3542; --surface-bg: #111821; --panel-bg: #16202b; --muted-bg: #1a2430; --text-color: #e5edf5; --subtle-text: #b7c5d5; --footer-text: #9db0c3; --shadow-color: rgba(0,0,0,0.28); }
+            h2 { border-bottom-color: var(--border-color); }
+            h3 { color: #edf3f9; }
+            .caution { color: #f6df86; }
+            .warning { color: #ffb37b; }
+            .danger { color: #ff9a9a; }
+            .note { color: #d4deea; }
+        }
 
         @media print { .sidebar { display: none; } .main-content { margin-left: 0; padding: 20px; } }
     </style>
