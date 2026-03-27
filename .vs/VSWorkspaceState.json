@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\manuals",
-    "\\manuals\\framegrabber",
-    "\\manuals\\framegrabber\\CFG-X1204"
+    "\\manuals\\framegrabber\\CFG-X1204",
+    "\\manuals\\sdk",
+    "\\manuals\\sdk\\cvsCamCtrl_kr"
   ],
-  "SelectedNode": "\\manuals\\framegrabber",
+  "SelectedNode": "\\manuals\\sdk\\cvsCamCtrl_en",
   "PreviewInSolutionExplorer": false
 }
