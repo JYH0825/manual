@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HX-A241M-94 Datasheet | Crevis</title>
+    <link rel="stylesheet" href="../../../../css/product_manual/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>HX-A241M-94</h2>
+    <a class="back-link" href="../../../../index.html"><span>&larr; Manual Center</span></a>
+    <ul>
+        <li><a href="#overview"><span>1. Product Overview</span></a></li>
+        <li><a href="#features"><span>2. Key Features</span></a></li>
+        <li><a href="#mechanical"><span>3. Dimensions</span></a></li>
+        <li><a href="#interface"><span>4. Interface & Pin Map</span></a></li>
+        <li><a href="#led"><span>5. LED Status</span></a></li>
+        <li><a href="#specifications"><span>6. Specifications</span></a></li>
+        <li><a href="#warranty"><span>7. Warranty</span></a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    
+    <header class="header-box">
+        <div class="header-text">
+            <p class="category-label">High Speed CoaXPress 2.0 Camera</p>
+            <h1 class="model-title">HX-A241M-94</h1>
+            <p class="model-subtitle">Sony CMOS Pregius S IMX530 | 24.5 MP | Global Shutter</p>
+        </div>
+        
+        <div class="header-visual-group">
+            <img src="images/crevis_logo.jpg" class="header-logo" alt="Crevis Logo">
+            <img src="images/hx_camera_photo.png" class="header-camera-main" alt="HX-A241M-94 Camera Photo">
+        </div>
+    </header>
+
+    <section id="overview">
+        <h2>1. Product Overview</h2>
+        <p>
+            The <strong>HX-A241M-94</strong> is a professional-grade, ultra-high speed industrial camera designed for high-end vision systems. 
+            Featuring the **Sony® Pregius S IMX530** global shutter sensor, it delivers **24.5 megapixel** resolution (5328 x 4608) at an impressive **94 fps** through a **CoaXPress 12 (CXP-12) 2-channel** interface. 
+            With its back-illuminated pixel structure and massive bandwidth, this model is optimized for high-throughput semiconductor inspection, large-scale electronics assembly, and advanced sports analytics where every frame counts.
+        </p>
+    </section>
+
+    <section id="features">
+        <h2>2. Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>Pregius S Sensor Performance</strong>
+                Utilizes the 4th generation IMX530 sensor, providing high sensitivity and excellent image quality with a 2.74 µm pixel size in a 1.2" optical format.
+            </div>
+            <div class="feature-item">
+                <strong>High-Speed CXP-12 Interface</strong>
+                The dual-channel CoaXPress 2.0 interface ensures rapid data transmission up to 24 Gbps with minimal jitter and latency.
+            </div>
+            <div class="feature-item">
+                <strong>Global Shutter Accuracy</strong>
+                Eliminates motion artifacts, allowing for precise distortion-free imaging of fast-moving objects on automated production lines.
+            </div>
+            <div class="feature-item">
+                <strong>Industrial Ruggedness</strong>
+                Encased in a robust housing designed for superior thermal dissipation and high stability in challenging industrial environments.
+            </div>
+        </div>
+    </section>
+
+    <section id="mechanical">
+        <h2>3. Mechanical Dimensions</h2>
+        <div class="dimension-block">
+            <img src="images/dimension_hx.png" alt="HX-A241M-94 Mechanical Outline">
+            <p class="caption">Figure 1. Mechanical Outline (Unit: 50 x 50 x 34 mm excluding mount)</p>
+        </div>
+    </section>
+
+   <section id="interface">
+        <h2>4. Interface & Pin Map</h2>
+        
+        <h3>4.1 Back Panel Layout</h3>
+        <div class="interface-card">
+            <div class="interface-visual">
+                <img src="images/backpanel_hx.png" class="img-backpanel" alt="Back Panel View">
+                <p class="caption">Camera Back Panel</p>
+            </div>
+            <div class="interface-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;" class="text-center">NO.</th>
+                            <th style="width: 45%;">Name</th>
+                            <th>Remark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="text-center">1</td><td>CoaXPress Connector (Link 1, 2)</td><td>Micro-BNC (HD-BNC) with PoCXP</td></tr>
+                        <tr><td class="text-center">2</td><td>Power & External I/O Connector</td><td>6-Pin Circular</td></tr>
+                        <tr><td class="text-center">3, 4</td><td>Status LED Indicators</td><td>CXP Link/Status display</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h3>4.2 6-Pin Circular Connector Pin Assignment</h3>
+        <div class="interface-card">
+            <div class="interface-visual">
+                <img src="images/6pin.png" class="img-pinmap" alt="6-Pin Assignment">
+                <p class="caption">6-Pin Connector</p>
+            </div>
+            <div class="interface-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;" class="text-center">No.</th>
+                            <th style="width: 28%;">Name</th>
+                            <th style="width: 15%;" class="text-center">I/O</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="text-center">1</td><td>DC VCC</td><td class="text-center">IN</td><td>+12V ~ +24V DC Input</td></tr>
+                        <tr><td class="text-center">2</td><td>TRIGGER+</td><td class="text-center">IN</td><td>Opto-Isolated Input</td></tr>
+                        <tr><td class="text-center">3</td><td>STROBE-</td><td class="text-center">OUT</td><td>Common Ground (Out)</td></tr>
+                        <tr><td class="text-center">4</td><td>STROBE+</td><td class="text-center">OUT</td><td>Opto-Isolated Output</td></tr>
+                        <tr><td class="text-center">5</td><td>TRIGGER-</td><td class="text-center">IN</td><td>Common Ground (In)</td></tr>
+                        <tr><td class="text-center">6</td><td>DC GND</td><td class="text-center">IN</td><td>Power Ground</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="led">
+        <h2>5. LED Status Indicators</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">LED Position</th>
+                        <th style="width: 30%;">Color / Behavior</th>
+                        <th>Status Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2" class="text-center"><strong>Left LED (Link)</strong></td>
+                        <td>Solid Red</td>
+                        <td>Link disconnected or hardware error detected.</td>
+                    </tr>
+                    <tr>
+                        <td>Solid Green</td>
+                        <td>CXP link established successfully.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="text-center"><strong>Right LED (Status)</strong></td>
+                        <td>Off</td>
+                        <td>Initialization complete / Waiting for Acquisition.</td>
+                    </tr>
+                    <tr>
+                        <td>Solid Green</td>
+                        <td>Waiting for Trigger input.</td>
+                    </tr>
+                    <tr>
+                        <td>Flashing Green</td>
+                        <td>Image data transferring.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="specifications">
+        <h2>6. Specifications</h2>
+        <div class="table-container">
+            <h3>6.1 Performance Specifications</h3>
+            <table>
+                <tbody>
+                    <tr><th style="width: 35%;">Sensor Model</th><td>Sony CMOS Pregius S IMX530</td></tr>
+                    <tr><th>Resolution</th><td>5328 (H) x 4608 (V) (24.5 Megapixel)</td></tr>
+                    <tr><th>Pixel Size / Format</th><td>2.74 µm x 2.74 µm / 1.2"</td></tr>
+                    <tr><th>Frame Rate (Max.)</th><td>94 fps</td></tr>
+                    <tr><th>Exposure Time</th><td>1 µs ~ 1 sec</td></tr>
+                    <tr><th>Gain Control</th><td>Digital: x1 ~ x4</td></tr>
+                    <tr><th>Pixel Data Format</th><td>Mono 8 / 10 / 12</td></tr>
+                    <tr><th>Data Interface</th><td>CoaXPress 12 2-channel</td></tr>
+                </tbody>
+            </table>
+
+            <h3>6.2 Electrical & Environmental</h3>
+            <table>
+                <tbody>
+                    <tr><th style="width: 35%;">Power Requirements</th><td>PoCXP or External DC 12V ~ 24V</td></tr>
+                    <tr><th>Shutter Type</th><td>Global Shutter</td></tr>
+                    <tr><th>Operating Temp.</th><td>0°C ~ +40°C (at housing)</td></tr>
+                    <tr><th>Standard Compliance</th><td>CE, FCC, RoHS, WEEE</td></tr>
+                    <tr><th>IP rating</th><td>IP30</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="warranty">
+        <h2>7. Warranty</h2>
+        <div class="box note">
+            <div>
+                <strong>3-Year Premium Warranty:</strong> 
+                Crevis warrants the HX-A241M-94 for long-term industrial reliability.
+                Specifications are subject to change without notice for quality improvement.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Crevis Technology Co., Ltd. All rights reserved.
+    </footer>
+</div>
+
+</body>
+</html>
