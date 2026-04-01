@@ -6,7 +6,6 @@
     <title>Crevis Technical Manual Center</title>
     <style>
         :root {
-            color-scheme: light dark;
             --bg-color: #f5f8fb;
             --card-bg: #ffffff;
             --text-color: #1f2933;
@@ -60,22 +59,6 @@
         .tag.support { background: var(--tag-support); color: white; }
 
         footer { margin-top: auto; padding: 40px; color: var(--footer-color); font-size: 0.85rem; border-top: 1px solid var(--border-color); width: 100%; text-align: center; }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #0d1117;
-                --card-bg: #161b22;
-                --text-color: #c9d1d9;
-                --heading-color: #ffffff;
-                --muted-color: #8b949e;
-                --accent-color: #58a6ff;
-                --accent-shadow: rgba(88, 166, 255, 0.3);
-                --border-color: #30363d;
-                --footer-color: #484f58;
-            }
-
-            .manual-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-        }
 
         @media (max-width: 600px) {
             .brand-container { position: static; text-align: center; margin-top: 20px; }
