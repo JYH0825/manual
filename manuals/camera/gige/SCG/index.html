@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCG제품메뉴얼 | Crevis</title>
+    <title>SCG제품매뉴얼 | Crevis</title>
     <link rel="stylesheet" href="../../../../css/product_manual/style.css">
     <style>
         :root {
@@ -13,6 +13,9 @@
             --brand-teal-soft: #e9f8f6;
             --brand-ink: #17394a;
             --brand-line: #d9e8ea;
+            --brand-warn: #d94b45;
+            --brand-warn-soft: #fff1f0;
+            --brand-gold: #d9a441;
         }
         html { scroll-behavior: smooth; }
         body {
@@ -51,6 +54,67 @@
         .content {
             max-width: 1320px;
             background: linear-gradient(180deg, #ffffff 0%, #fcfefe 100%);
+            counter-reset: manual-section;
+        }
+        .content > section {
+            position: relative;
+            margin: 0 0 28px;
+            padding: 26px 30px 30px;
+            background:
+                linear-gradient(180deg, rgba(20, 157, 151, 0.02), rgba(255, 255, 255, 0.98) 28%),
+                #fff;
+            border: 1px solid #e2ecef;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(22, 57, 74, 0.045);
+            counter-increment: manual-section;
+        }
+        .content > section::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            top: 0;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--brand-teal) 0%, rgba(20, 157, 151, 0.18) 35%, rgba(239, 125, 34, 0.22) 70%, var(--brand-orange) 100%);
+        }
+        .content > section > h2 {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 0 0 22px;
+            padding: 14px 18px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(20, 157, 151, 0.08), rgba(239, 125, 34, 0.08));
+            border: 1px solid #dbe9eb;
+            color: var(--brand-ink);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        .content > section > h2::before {
+            content: none;
+        }
+        .content > section:nth-of-type(even) > h2::before {
+            content: none;
+        }
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 26px;
+            padding: 10px 14px 10px 16px;
+            border-left: 4px solid var(--brand-orange);
+            border-radius: 14px;
+            background: linear-gradient(90deg, rgba(239, 125, 34, 0.08), rgba(255, 255, 255, 0.98));
+            box-shadow: inset 0 0 0 1px rgba(239, 125, 34, 0.08);
+        }
+        h3::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            flex: 0 0 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-orange) 100%);
+            box-shadow: 0 0 0 6px rgba(20, 157, 151, 0.08);
         }
         .header-box {
             align-items: center;
@@ -65,6 +129,30 @@
             border-radius: 22px;
             box-shadow: 0 10px 26px rgba(22, 57, 74, 0.07);
             position: relative;
+        }
+        .header-topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 3;
+        }
+        .translate-anchor {
+            min-width: 0;
+        }
+        #google_translate_element {
+            display: inline-flex;
+            justify-content: flex-end;
+            max-width: 180px;
+            transform: scale(0.92);
+            transform-origin: top right;
+        }
+        .header-text {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            padding-right: 0;
         }
         .header-box::after {
             content: "";
@@ -110,9 +198,158 @@
             background: #fafcfd;
             font-size: 0.9rem;
         }
+        .category-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 10px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(20, 157, 151, 0.1);
+            color: var(--brand-teal);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .category-label::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 50%, #fff 0 18%, transparent 19%),
+                radial-gradient(circle at 50% 50%, var(--brand-teal) 0 56%, transparent 57%),
+                radial-gradient(circle at 50% 50%, rgba(20, 157, 151, 0.18) 0 100%);
+        }
+        .model-title {
+            display: block;
+            margin: 0 0 10px;
+            padding: 0;
+            text-align: left;
+        }
+        .model-title::after {
+            content: none;
+        }
         .table-container {
             overflow-x: auto;
             margin: 22px 0;
+            padding-bottom: 10px;
+            scrollbar-gutter: stable both-edges;
+        }
+        .table-container::-webkit-scrollbar {
+            height: 12px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: #eef5f6;
+            border-radius: 999px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, rgba(20, 157, 151, 0.7), rgba(239, 125, 34, 0.7));
+            border-radius: 999px;
+            border: 2px solid #eef5f6;
+        }
+        .spec-table-stack {
+            margin: 0;
+            border-radius: 0;
+            border-top: 0;
+            box-shadow: none;
+        }
+        .spec-table-stack table {
+            table-layout: auto;
+            width: max-content;
+            min-width: 100%;
+        }
+        .spec-table-stack th,
+        .spec-table-stack td {
+            min-width: 168px;
+            white-space: normal;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-height: 1.45;
+            vertical-align: top;
+            padding: 9px 10px;
+        }
+        .spec-table-stack th:first-child,
+        .spec-table-stack td:first-child {
+            min-width: 132px;
+        }
+        .spec-table-stack th {
+            font-size: 0.88rem;
+            white-space: nowrap;
+            word-break: normal;
+            overflow-wrap: normal;
+            text-align: center;
+        }
+        .spec-table-stack td {
+            font-size: 0.84rem;
+        }
+        .spec-table-stack td:first-child,
+        .spec-table-stack th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: #f8fbfc;
+            box-shadow: 8px 0 12px rgba(22, 57, 74, 0.05);
+        }
+        .spec-table-stack th:first-child {
+            z-index: 3;
+            background: #eef7f7;
+        }
+        .spec-table-stack tr:nth-child(even) td:first-child {
+            background: #f4f9fa;
+        }
+        .spec-table-stack + .spec-table-stack {
+            margin-top: -1px;
+        }
+        .spec-table-stack.spec-table-stack-first {
+            margin-top: 22px;
+            border-top: 1px solid #dce9ec;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .spec-table-stack.spec-table-stack-middle {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .spec-table-stack.spec-table-stack-last {
+            margin-bottom: 22px;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            box-shadow: 0 4px 14px rgba(22, 57, 74, 0.03);
+        }
+        .spec-table-stack + .spec-table-stack table thead th {
+            border-top: 1px solid #dce9ec;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 14px 0 10px;
+            padding: 0;
+        }
+        .feature-list li {
+            position: relative;
+            margin: 10px 0;
+            padding: 11px 14px 11px 44px;
+            border: 1px solid #e4edef;
+            border-radius: 14px;
+            background: linear-gradient(90deg, rgba(20, 157, 151, 0.045), rgba(255, 255, 255, 0.96));
+            box-shadow: 0 3px 10px rgba(22, 57, 74, 0.025);
+        }
+        .feature-list li::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            margin-top: -9px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 50%, #fff 0 26%, transparent 27%),
+                linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-orange) 100%);
+            box-shadow: 0 0 0 5px rgba(20, 157, 151, 0.08);
         }
         .image-grid {
             display: grid;
@@ -129,6 +366,29 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+        .image-card > p:first-child {
+            margin: 0 0 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(239, 125, 34, 0.08), rgba(20, 157, 151, 0.05));
+            border: 1px solid #ebeff2;
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+        .image-card > p:first-child strong {
+            display: inline-block;
+            color: var(--brand-ink);
+        }
+        .image-card > p:last-child {
+            margin: 12px 0 0;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #f8fbfc;
+            color: #36505e;
+            font-size: 0.94rem;
+            line-height: 1.55;
+            border: 1px dashed #d8e7ea;
         }
         .image-grid > .image-card:only-child {
             max-width: 860px;
@@ -391,6 +651,60 @@
             font-weight: 700;
             color: var(--text-color);
         }
+        .inline-note-title.note,
+        .inline-note-title.warning {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px 9px 12px;
+        }
+        .inline-note-title.note::before,
+        .inline-note-title.warning::before {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.84rem;
+            font-weight: 800;
+        }
+        .inline-note-title.note::before {
+            content: "i";
+            background: rgba(20, 157, 151, 0.14);
+            color: var(--brand-teal);
+        }
+        .inline-note-title.warning {
+            color: #8f2824;
+            background: linear-gradient(90deg, rgba(217, 75, 69, 0.12), rgba(255, 241, 240, 0.95));
+            border: 1px solid rgba(217, 75, 69, 0.18);
+        }
+        .inline-note-title.warning::before {
+            content: "!";
+            background: rgba(217, 75, 69, 0.16);
+            color: var(--brand-warn);
+        }
+        #1-5-주의사항 p,
+        #1-5-주의사항 li,
+        #1-5-주의사항 strong,
+        #1-5-주의사항 .caption,
+        #1-5-주의사항 .image-card > p:last-child,
+        #1-5-주의사항 .image-card > p:first-child {
+            color: #8f2824;
+        }
+        #1-5-주의사항 .feature-list li,
+        #1-5-주의사항 .image-card > p:first-child,
+        #1-5-주의사항 .image-card > p:last-child {
+            background: linear-gradient(90deg, rgba(217, 75, 69, 0.1), rgba(255, 241, 240, 0.96));
+            border-color: rgba(217, 75, 69, 0.18);
+        }
+        #1-5-주의사항 .feature-list li::before {
+            background:
+                radial-gradient(circle at 50% 50%, #fff 0 26%, transparent 27%),
+                linear-gradient(135deg, #e0625d 0%, #c83f39 100%);
+            box-shadow: 0 0 0 5px rgba(217, 75, 69, 0.1);
+        }
         .sidebar::before {
             content: "";
             position: absolute;
@@ -447,13 +761,32 @@
         .content {
             border-left: 1px solid rgba(20, 157, 151, 0.06);
         }
-        .header-text {
-            position: relative;
-            z-index: 1;
-        }
         .header-visual-group {
             position: relative;
             z-index: 1;
+        }
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-gadget-icon {
+            display: none !important;
+        }
+        .goog-te-gadget {
+            color: transparent !important;
+            font-size: 0 !important;
+        }
+        .goog-te-gadget .goog-te-combo {
+            height: 34px;
+            padding: 6px 34px 6px 12px;
+            border: 1px solid #d8e8ea;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--brand-ink);
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(22, 57, 74, 0.06);
+            outline: none;
+        }
+        body {
+            top: 0 !important;
         }
         .header-visual-group::before {
             content: "";
@@ -498,7 +831,8 @@
         .table-container {
             border: 1px solid #dce9ec;
             border-radius: 14px;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             background: #fff;
             box-shadow: 0 4px 14px rgba(22, 57, 74, 0.03);
         }
@@ -546,6 +880,11 @@
         .format-card .caption,
         .reverse-card .caption {
             font-size: 0.96rem;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(20, 157, 151, 0.045), rgba(255, 255, 255, 0.96));
+            border: 1px solid #e6eef0;
         }
         .inline-note-title {
             background: linear-gradient(90deg, rgba(239, 125, 34, 0.08), rgba(20, 157, 151, 0.04));
@@ -583,11 +922,51 @@
         .toc > li > a::before {
             color: #9fe6e0;
         }
+        .connector-figure,
+        .diagram-card,
+        .image-card,
+        .pattern-card,
+        .mode-card,
+        .format-card,
+        .reverse-card {
+            position: relative;
+        }
+        .connector-figure::before,
+        .diagram-card::before,
+        .image-card::before,
+        .pattern-card::before,
+        .mode-card::before,
+        .format-card::before,
+        .reverse-card::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-teal) 100%);
+            opacity: 0.75;
+        }
         @media screen and (max-width: 1024px) {
+            .header-topbar {
+                justify-content: flex-start;
+                margin-bottom: 12px;
+            }
             .sidebar .eyebrow,
             .sidebar .rev,
             .sidebar .back-link span {
                 display: none;
+            }
+            .content > section {
+                padding: 22px 20px 24px;
+            }
+            .content > section::before {
+                left: 20px;
+                right: 20px;
+            }
+            .content > section > h2 {
+                padding: 12px 14px;
             }
             .decimation-grid {
                 grid-template-columns: 1fr;
@@ -688,9 +1067,12 @@
 
     <div class="content">
         <header class="header-box">
+            <div class="header-topbar">
+                <div id="google_translate_element" class="translate-anchor"></div>
+            </div>
             <div class="header-text">
                 <p class="category-label">GigE Vision Camera Manual</p>
-                <h1 class="model-title">SCG제품메뉴얼</h1>
+                <h1 class="model-title">SCG제품매뉴얼</h1>
                 <p class="model-subtitle">Sony CMOS GigE Camera USER MANUAL</p>
                 <div class="meta-strip">
                     <div class="pill">Version 1.4</div>
@@ -827,7 +1209,7 @@
 <li>Power supply : DC 12V (10.8 ~ 13.2V range supported) 및 PoE</li>
 </ul>
 <h3 id="2-2-주요-사양">2.2 주요 사양</h3>
-<div class="table-container"><table>
+<div class="table-container spec-table-stack spec-table-stack-first"><table>
 <thead><tr>
 <th>Spec.</th>
 <th>MG-A160M/K-72</th>
@@ -1060,24 +1442,18 @@
 <td>Horizontal / Vertical ROI Support</td>
 <td>Horizontal / Vertical ROI Support</td>
 </tr>
-</tbody>
-</table></div>
-<div class="table-container"><table>
-<thead><tr>
-<th>Video I/F</th>
-<th>Video I/F</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-<th>Ethernet 1000 Base-T (GigE Vision Standard)</th>
-</tr></thead>
-<tbody>
 <tr>
-<td>Video Format</td>
+<td>Video I/F</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+<td>Ethernet 1000 Base-T (GigE Vision Standard)</td>
+</tr>
+<tr>
 <td>Video Format</td>
 <td>Mono Model : Mono8/10/12, Mono10/12Packed<br>Color Model : Mono8/10/12, Mono10/12Packed, BayerRG8/10/12, BayerRG10/12Packed, YUV422Packed<br>(Not support 12bit mode for MG-A201R/L)</td>
 <td>Mono Model : Mono8/10/12, Mono10/12Packed<br>Color Model : Mono8/10/12, Mono10/12Packed, BayerRG8/10/12, BayerRG10/12Packed, YUV422Packed<br>(Not support 12bit mode for MG-A201R/L)</td>
@@ -1090,7 +1466,6 @@
 </tr>
 <tr>
 <td>Communication</td>
-<td>Communication</td>
 <td>GigE Vision Standard</td>
 <td>GigE Vision Standard</td>
 <td>GigE Vision Standard</td>
@@ -1102,7 +1477,6 @@
 </tr>
 <tr>
 <td>Minimum Illumination</td>
-<td>Minimum Illumination</td>
 <td>1.0 lx, F1.4, Gain MAX, without IR cut filter</td>
 <td>1.0 lx, F1.4, Gain MAX, without IR cut filter</td>
 <td>1.0 lx, F1.4, Gain MAX, without IR cut filter</td>
@@ -1113,7 +1487,6 @@
 <td>1.0 lx, F1.4, Gain MAX, without IR cut filter</td>
 </tr>
 <tr>
-<td>SNR</td>
 <td>SNR</td>
 <td>B/W : 36dB<br>Color : 36dB</td>
 <td>B/W : 37dB<br>Color : 37dB</td>
@@ -1126,7 +1499,6 @@
 </tr>
 <tr>
 <td>Function Control</td>
-<td>Function Control</td>
 <td>GainAuto, ExposureAuto, BalanceWhiteAuto, Acquisition Frame Rate(Adjustable), Gamma Control,<br>Line Debouncer, Color Transformation Control, Noise Reduction Filter, Pattern Noise Removal</td>
 <td>GainAuto, ExposureAuto, BalanceWhiteAuto, Acquisition Frame Rate(Adjustable), Gamma Control,<br>Line Debouncer, Color Transformation Control, Noise Reduction Filter, Pattern Noise Removal</td>
 <td>GainAuto, ExposureAuto, BalanceWhiteAuto, Acquisition Frame Rate(Adjustable), Gamma Control,<br>Line Debouncer, Color Transformation Control, Noise Reduction Filter, Pattern Noise Removal</td>
@@ -1137,7 +1509,6 @@
 <td>GainAuto, ExposureAuto, BalanceWhiteAuto, Acquisition Frame Rate(Adjustable), Gamma Control,<br>Line Debouncer, Color Transformation Control, Noise Reduction Filter, Pattern Noise Removal</td>
 </tr>
 <tr>
-<td>Lens mount</td>
 <td>Lens mount</td>
 <td>C mount</td>
 <td>C mount</td>
@@ -1161,7 +1532,6 @@
 <td>Optical center ≤ ± 0.1 mm</td>
 </tr>
 <tr>
-<td>Power Supply</td>
 <td>Power Supply</td>
 <td>DC(12V ± 10%) or PoE</td>
 <td>DC(12V ± 10%) or PoE</td>
@@ -1198,7 +1568,6 @@
 </tr>
 <tr>
 <td>Weight</td>
-<td>Weight</td>
 <td>&lt; 60g</td>
 <td>&lt; 60g</td>
 <td>&lt; 60g</td>
@@ -1209,7 +1578,6 @@
 <td>&lt; 60g</td>
 </tr>
 <tr>
-<td>Dimension</td>
 <td>Dimension</td>
 <td>29 x 29 x 40 mm (Without mount, Connector)</td>
 <td>29 x 29 x 40 mm (Without mount, Connector)</td>
@@ -1222,7 +1590,6 @@
 </tr>
 <tr>
 <td>Operating /<br> Storage</td>
-<td>Operating /<br> Storage</td>
 <td>0℃ ~ +45℃ (with &lt; 20~80% RH) /-20℃ ~ +60℃</td>
 <td>0℃ ~ +45℃ (with &lt; 20~80% RH) /-20℃ ~ +60℃</td>
 <td>0℃ ~ +45℃ (with &lt; 20~80% RH) /-20℃ ~ +60℃</td>
@@ -1233,7 +1600,6 @@
 <td>0℃ ~ +45℃ (with &lt; 20~80% RH) /-20℃ ~ +60℃</td>
 </tr>
 <tr>
-<td>Vibration /<br> Shock</td>
 <td>Vibration /<br> Shock</td>
 <td>10G / 20G</td>
 <td>10G / 20G</td>
@@ -1246,7 +1612,6 @@
 </tr>
 <tr>
 <td>Standard <br>Compliancy</td>
-<td>Standard <br>Compliancy</td>
 <td>CE (EN61326-1; 2006년; Class A)</td>
 <td>CE (EN61326-1; 2006년; Class A)</td>
 <td>CE (EN61326-1; 2006년; Class A)</td>
@@ -1257,7 +1622,6 @@
 <td>CE (EN61326-1; 2006년; Class A)</td>
 </tr>
 <tr>
-<td>Environments</td>
 <td>Environments</td>
 <td>RoHS / WEEE</td>
 <td>RoHS / WEEE</td>
@@ -1270,7 +1634,7 @@
 </tr>
 </tbody>
 </table></div>
-<div class="table-container"><table>
+<div class="table-container spec-table-stack spec-table-stack-last"><table>
 <thead><tr>
 <th>Spec.</th>
 <th>Spec.</th>
@@ -1920,7 +2284,7 @@
 <img src="images/pdf-extracted/page17_01_xref119.png" alt="ROI diagram" class="img-full">
 </figure>
 </div>
-<p class="inline-note-title">※ 참고 사항</p>
+<p class="inline-note-title note">※ 참고 사항</p>
 <p>ROI 로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-2-decimation-horizontal-vertical">4.1.2 Decimation Horizontal / Vertical</h3>
 <p>이미지 센서에서 수직 또는 수평 방향으로 1-Pixel 씩 건너뛰며 읽어내는 기능입니다. 이미지의 해상도는 절반으로 줄어드는 반면 Frame Rate 는 증가합니다. Color 모델의 경우, 네 개의 컬러 채널을 모두 표현하기 위해 2-Pixel 단위로 건너뛰게 됩니다.</p>
@@ -1929,12 +2293,12 @@
 <figure class="image-card decimation-card"><img src="images/pdf-extracted/page18_02_decimation_h1_v2.png" alt="Decimation Hor. = 1x / Vert. = 2x" class="img-full"></figure>
 <figure class="image-card decimation-card"><img src="images/pdf-extracted/page18_03_decimation_h2_v1.png" alt="Decimation Hor. = 2x / Vert. = 1x" class="img-full"></figure>
 </div>
-<p class="inline-note-title">※ 참고 사항</p>
+<p class="inline-note-title note">※ 참고 사항</p>
 <p>Decimation 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-3-binning-horizontal-vertical-mg-a160m-72-모델에-한함">4.1.3 Binning Horizontal / Vertical (MG-A160M-72 모델에 한함)</h3>
 <p>이미지 센서에서 수직 또는 수평 방향으로 인접한 픽셀끼리 누적한 다음 차례로 읽어내는 기능입니다.</p>
 <p>Decimation 과 동일한 해상도를 갖는 반면, Binning 은 영상 신호가 더해지기 때문에 감도 또한 약 두배 가량 상승하게 됩니다.</p>
-<p class="inline-note-title">※ 참고 사항</p>
+<p class="inline-note-title note">※ 참고 사항</p>
 <p>Binning 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-4-reverse-x-y">4.1.4 Reverse X, Y</h3>
 <p>영상의 좌/우 또는 상/하를 반전하여 출력하는 기능입니다. Color 모델의 경우 &#x27;Reverse Mode&#x27; 따라 &#x27;Bayer Pixel Order&#x27;도 함께 바뀐 상태로 이미지가 출력 됩니다.</p>
@@ -1946,7 +2310,7 @@
 <figure class="reverse-card"><img src="images/pdf-extracted/page19_07_xref134.png" alt="Reverse X = False, Reverse Y = True"><figcaption class="caption">Reverse X = False, Reverse Y = True<br>(Bayer GB)</figcaption></figure>
 <figure class="reverse-card"><img src="images/pdf-extracted/page19_08_xref135.png" alt="Reverse X = True, Reverse Y = True"><figcaption class="caption">Reverse X = True, Reverse Y = True<br>(Bayer BG)</figcaption></figure>
 </div>
-<p class="inline-note-title">※ 유의사항</p>
+<p class="inline-note-title warning">※ 유의사항</p>
 <p>1) &#x27;Reverse Y&#x27; 선택 시 Defect Filter 사용이 제한되기 때문에 불량 화소가 나타날 수 있습니다. 이로 인해 노출된 불량화소는 &#x27;Defect Pixel Correction&#x27; 카테고리에서 제거할 수 있습니다. (&#x27;Defect Pixel Correction&#x27;절 참고)</p>
 <p>2) ROI 와 Reverse 가 동시에 사용될 경우, 반전된 이미지로부터 ROI 기능이 적용됩니다. 아래 그림과 같이 Reverse 가 활성화 될 경우 Image 의 시작 좌표인 (0,0) Pixel 의 위치가 반전됩니다. 이 때문에 Reverse 적용 이전과 동일한 영역을 촬상하기 위해선 Total Size - ROI Size 만큼의 Image Offset 이 필요합니다.</p>
 <div class="reverse-grid reverse-grid-four">
@@ -3446,6 +3810,20 @@
             This HTML manual follows the existing GigE manual layout and separates PDF-extracted images for reuse.
         </footer>
     </div>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'ko',
+                    includedLanguages: 'ko,en',
+                    autoDisplay: false,
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
 
