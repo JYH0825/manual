@@ -105,7 +105,7 @@
         h3 {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0;
             margin-top: 26px;
             padding: 10px 14px 10px 16px;
             border-left: 4px solid var(--brand-orange);
@@ -114,13 +114,8 @@
             box-shadow: inset 0 0 0 1px rgba(239, 125, 34, 0.08);
         }
         h3::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            flex: 0 0 8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-orange) 100%);
-            box-shadow: 0 0 0 5px rgba(20, 157, 151, 0.08);
+            content: none;
+            display: none;
         }
         .header-box {
             align-items: center;
@@ -431,14 +426,14 @@
             position: absolute;
             left: 14px;
             top: 50%;
-            width: 15px;
-            height: 15px;
-            margin-top: -7px;
+            width: 13px;
+            height: 13px;
+            margin-top: -6px;
             border-radius: 50%;
             background:
                 radial-gradient(circle at 50% 50%, #fff 0 26%, transparent 27%),
                 linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-orange) 100%);
-            box-shadow: 0 0 0 4px rgba(20, 157, 151, 0.08);
+            box-shadow: 0 0 0 3px rgba(20, 157, 151, 0.08);
         }
         .image-grid {
             display: grid;
@@ -737,9 +732,9 @@
             grid-column: 1 / -1;
         }
         .inline-note-title {
-            margin: 18px 0 8px;
-            font-weight: 700;
-            color: var(--text-color);
+            margin: 18px 0 10px;
+            font-weight: 800;
+            line-height: 1.45;
         }
         .inline-note-title.note,
         .inline-note-title.warning {
@@ -747,7 +742,14 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 9px 14px 9px 12px;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 8px 14px 8px 12px;
+            border: 1px solid rgba(217, 75, 69, 0.22);
+            border-radius: 10px;
+            background: #fff5f4;
+            color: #9f2520;
+            box-shadow: 0 6px 14px rgba(217, 75, 69, 0.07);
         }
         .inline-note-title.note::before,
         .inline-note-title.warning::before {
@@ -756,24 +758,21 @@
             justify-content: center;
             width: 18px;
             height: 18px;
+            flex: 0 0 18px;
             border-radius: 50%;
             font-size: 0.74rem;
             font-weight: 800;
+            background: #ffe1df;
+            color: var(--brand-warn);
         }
         .inline-note-title.note::before {
             content: "i";
-            background: rgba(20, 157, 151, 0.14);
-            color: var(--brand-teal);
         }
         .inline-note-title.warning {
             color: #8f2824;
-            background: linear-gradient(90deg, rgba(217, 75, 69, 0.12), rgba(255, 241, 240, 0.95));
-            border: 1px solid rgba(217, 75, 69, 0.18);
         }
         .inline-note-title.warning::before {
             content: "!";
-            background: rgba(217, 75, 69, 0.16);
-            color: var(--brand-warn);
         }
         #1-5-주의사항 p,
         #1-5-주의사항 li,
@@ -1236,9 +1235,6 @@
             max-height: 500px;
         }
         .inline-note-title {
-            background: linear-gradient(90deg, rgba(239, 125, 34, 0.08), rgba(20, 157, 151, 0.04));
-            padding: 8px 12px;
-            border-radius: 10px;
             width: fit-content;
         }
         .decimation-grid,
@@ -1453,10 +1449,8 @@
 <p>5) VGA : FHD지원(최소), UHD 지원 이상(권장)</p>
 <h3 id="1-2-sdk">1.2 SDK</h3>
 <ul class="feature-list">
-<li>크래비스 GigE 카메라를 사용하려면 크래비스에서 제공하는 SDK를 이용하여 영상을 받거나,</li>
+<li>크래비스 GigE 카메라를 사용하려면 크래비스에서 제공하는 SDK를 이용하여 영상을 받거나, GigE Vision을 지원하는 이미지 라이브러리(Cognex, HALCON, Euresys, CVB 등)를 사용하여 영상을 취득할 수 있습니다.</li>
 </ul>
-<p>GigE Vision을 지원하는 이미지 라이브러리(Cognex, HALCON, Euresys, CVB 등)를 사용하여</p>
-<p>영상을 취득할 수 있습니다.</p>
 <ul class="feature-list">
 <li>크래비스 SDK 다운로드 링크 : <a href="https://www.crevis.co.kr/kor/support/download/CamGuideCL.zip" target="_blank" rel="noopener">https://www.crevis.co.kr/kor/support/download/CamGuideCL.zip</a></li>
 </ul>
@@ -1491,23 +1485,20 @@
 </div>
 <h3 id="1-5-주의사항">1.5 주의사항</h3>
 <ul class="feature-list">
-<li>동작 온도 : 0℃ ~ +40℃</li>
+<li>동작 온도 : 0℃ ~ +40℃ : 주변 온도 변화에 따라 데이터 출력이 변할 수 있으므로 일정하게 온도를 유지하십시오.</li>
 </ul>
-<p>주변 온도 변화에 따라 데이터 출력이 변할 수 있으므로 일정하게 온도를 유지하십시오.</p>
 <ul class="feature-list">
 <li>이더넷 허브를 통해 두 개 이상의 카메라를 연결하면, 대역폭 문제가 발생할 수 있습니다.</li>
 <li>UDP 통신은 데이터 전송을 보장하지 않습니다.</li>
-<li>패킷 손실 등을 줄이기 위해 SDK 설치 시 제공되는 Installation Guide를 참고하여 카메라 및</li>
+<li>패킷 손실 등을 줄이기 위해 SDK 설치 시 제공되는 Installation Guide를 참고하여 카메라 및 네트워크 카드를 설정하십시오.</li>
 </ul>
-<p>네트워크 카드를 설정하십시오.</p>
 <ul class="feature-list">
 <li>필터드라이버를 사용하기 위해선, 관리자 권한으로 실행하십시오.</li>
 <li>CamGuide는 자동으로 관리자 권한으로 실행됩니다.</li>
-<li>큰 사이즈의 패킷 사이즈는 패킷 손실을 최소화 합니다. 다만 카메라의 패킷 사이즈가 네트워크</li>
+<li>큰 사이즈의 패킷 사이즈는 패킷 손실을 최소화 합니다. 다만 카메라의 패킷 사이즈가 네트워크 카드의 점보 프레임 또는 점보 패킷 사이즈 보다 낮아야 합니다.</li>
 </ul>
-<p>카드의 점보 프레임 또는 점보 패킷 사이즈 보다 낮아야 합니다.</p>
 <ul class="feature-list">
-<li># 권장 패킷 사이즈 = (Image_Width * n) + 36.</li>
+<li>권장 패킷 사이즈 = (Image_Width * n) + 36.</li>
 </ul>
 <p>(단, n은 패킷 사이즈가 점보 프레임을 초과하지 않는 범위의 값).</p>
 <p>Ex) 2048 * 1024 해상도의 이미지를 전송할 경우의 권장 패킷 사이즈 = (2048 * 8) + 36 = 8228.</p>
@@ -1545,8 +1536,7 @@
 <ul class="feature-list">
 <li>자기장 및 전기장</li>
 </ul>
-<p>입출력신호가 강한 자기장 및 전기장에 노출되면 신호의 왜곡을 일으킬 수 있으므로 주의하셔야</p>
-<p>합니다.</p>
+<p>입출력신호가 강한 자기장 및 전기장에 노출되면 신호의 왜곡을 일으킬 수 있으므로 주의하셔야 합니다.</p>
 <ul class="feature-list">
 <li>환기</li>
 </ul>
@@ -2644,8 +2634,7 @@
 <img src="images/pdf-extracted/page17_01_xref119.png" alt="ROI diagram" class="img-full">
 </figure>
 </div>
-<p class="inline-note-title note">※ 참고 사항</p>
-<p>ROI 로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
+<p class="inline-note-title note">참고사항 : ROI 로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-2-decimation-horizontal-vertical">4.1.2 Decimation Horizontal / Vertical</h3>
 <p>이미지 센서에서 수직 또는 수평 방향으로 1-Pixel 씩 건너뛰며 읽어내는 기능입니다. 이미지의 해상도는 절반으로 줄어드는 반면 Frame Rate 는 증가합니다. Color 모델의 경우, 네 개의 컬러 채널을 모두 표현하기 위해 2-Pixel 단위로 건너뛰게 됩니다.</p>
 <div class="decimation-grid">
@@ -2653,13 +2642,11 @@
 <figure class="image-card decimation-card"><img src="images/pdf-extracted/page18_02_decimation_h1_v2_padded.png" alt="Decimation Hor. = 1x / Vert. = 2x" class="img-full"></figure>
 <figure class="image-card decimation-card"><img src="images/pdf-extracted/page18_03_decimation_h2_v1_clean.png" alt="Decimation Hor. = 2x / Vert. = 1x" class="img-full"></figure>
 </div>
-<p class="inline-note-title note">※ 참고 사항</p>
-<p>Decimation 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
+<p class="inline-note-title note">참고사항 : Decimation 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-3-binning-horizontal-vertical-mg-a160m-72-모델에-한함">4.1.3 Binning Horizontal / Vertical (MG-A160M-72 모델에 한함)</h3>
 <p>이미지 센서에서 수직 또는 수평 방향으로 인접한 픽셀끼리 누적한 다음 차례로 읽어내는 기능입니다.</p>
 <p>Decimation 과 동일한 해상도를 갖는 반면, Binning 은 영상 신호가 더해지기 때문에 감도 또한 약 두배 가량 상승하게 됩니다.</p>
-<p class="inline-note-title note">※ 참고 사항</p>
-<p>Binning 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
+<p class="inline-note-title note">참고사항 : Binning 으로 인해 변경된 Frame Rate 은 &#x27;Resulting Frame Rate&#x27; 파라미터를 통해 확인할 수 있습니다.</p>
 <h3 id="4-1-4-reverse-x-y">4.1.4 Reverse X, Y</h3>
 <p>영상의 좌/우 또는 상/하를 반전하여 출력하는 기능입니다. Color 모델의 경우 &#x27;Reverse Mode&#x27; 따라 &#x27;Bayer Pixel Order&#x27;도 함께 바뀐 상태로 이미지가 출력 됩니다.</p>
 <p>1) Reverse X 모드를 True 로 설정시, 영상의 좌/우가 반전됩니다. (Bayer RG → Bayer GR)</p>
@@ -2670,7 +2657,7 @@
 <figure class="reverse-card"><img src="images/pdf-extracted/page19_07_xref134.png" alt="Reverse X = False, Reverse Y = True"><figcaption class="caption">Reverse X = False, Reverse Y = True<br>(Bayer GB)</figcaption></figure>
 <figure class="reverse-card"><img src="images/pdf-extracted/page19_08_xref135.png" alt="Reverse X = True, Reverse Y = True"><figcaption class="caption">Reverse X = True, Reverse Y = True<br>(Bayer BG)</figcaption></figure>
 </div>
-<p class="inline-note-title warning">※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) &#x27;Reverse Y&#x27; 선택 시 Defect Filter 사용이 제한되기 때문에 불량 화소가 나타날 수 있습니다. 이로 인해 노출된 불량화소는 &#x27;Defect Pixel Correction&#x27; 카테고리에서 제거할 수 있습니다. (&#x27;Defect Pixel Correction&#x27;절 참고)</p>
 <p>2) ROI 와 Reverse 가 동시에 사용될 경우, 반전된 이미지로부터 ROI 기능이 적용됩니다. 아래 그림과 같이 Reverse 가 활성화 될 경우 Image 의 시작 좌표인 (0,0) Pixel 의 위치가 반전됩니다. 이 때문에 Reverse 적용 이전과 동일한 영역을 촬상하기 위해선 Total Size - ROI Size 만큼의 Image Offset 이 필요합니다.</p>
 <div class="reverse-grid reverse-grid-four">
@@ -2864,25 +2851,21 @@
 <figure class="image-card"><img src="images/pdf-extracted/page25_01_xref160.png" alt="Timing diagram of Freerun Mode" class="img-full"><figcaption class="caption">&lt;Timing Diagram of Freerun Mode&gt;</figcaption></figure>
 </div>
 <p>반면 Trigger Mode를 &#x27;On&#x27;으로 설정할 경우, 카메라는 Trigger Mode로 동작하게 됩니다. Trigger mode는 외부로부터 입력받은 Trigger에 의해 노광 시작 시점 또는 노광 시간 등이 결정 됩니다. 노광이 완료된 후 부터는 Freerun mode와 동일하게 프레임을 읽어오고 전송합니다. 자세한 타이밍은 p.22&lt;Timing Diagram of Trigger Signals&gt; 그림을 참고해 주시기 바랍니다.</p>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) 제품의 최대 Frame Rate보다 빠른 주기의 Trigger 신호가 입력될 경우, 출력 이미지의 Sync는</p>
-<p>손상됩니다. (비정상 트리거 입력 판별은 &#x27;Counter Control&#x27; 참조) 따라서 카메라 사양 이내의</p>
-<p>신호 규격을 준수하여 입력해 주시기 바랍니다.</p>
-<p>2) 트리거 신호 Line에 노이즈가 유입될 경우, 카메라가 노이즈를 트리거 신호로 오인할</p>
-<p>가능성이 있습니다. (노이즈 필터링 관련 &#x27;Line Debouncer Time&#x27; 기능 참조)</p>
+<p>손상됩니다. (비정상 트리거 입력 판별은 &#x27;Counter Control&#x27; 참조) 따라서 카메라 사양 이내의 신호 규격을 준수하여 입력해 주시기 바랍니다.</p>
+<p>2) 트리거 신호 Line에 노이즈가 유입될 경우, 카메라가 노이즈를 트리거 신호로 오인할 가능성이 있습니다. (노이즈 필터링 관련 &#x27;Line Debouncer Time&#x27; 기능 참조)</p>
 <h3 id="4-3-2-trigger-source">4.3.2 Trigger Source</h3>
 <p>트리거 신호의 Source를 정의합니다. Trigger Mode가 On으로 설정되어 있을 때 적용됩니다.</p>
 <ul class="feature-list">
 <li>Hardware 트리거 = 6핀 커넥터 입력</li>
 </ul>
-<p>Line1 : 2번 핀(Trigger +)과 5번 핀(Trigger -)을 통해 트리거를 입력 받습니다. 트리거의 전압 레벨</p>
-<p>범위는 최소2.5V에서 최대 24V까지 입니다.</p>
+<p>Line1 : 2번 핀(Trigger +)과 5번 핀(Trigger -)을 통해 트리거를 입력 받습니다. 트리거의 전압 레벨 범위는 최소2.5V에서 최대 24V까지 입니다.</p>
 <ul class="feature-list">
 <li>Software 트리거 = Host Software Trigger Command 입력</li>
 </ul>
-<p>Software 함수를 통해 카메라 내부에 트리거를 생성합니다. 이 설정에서는 &#x27;Exposure Mode&#x27;가</p>
-<p>&#x27;Timed&#x27;셔터 모드로만 지원됩니다.</p>
-<p>※ 참고사항</p>
+<p>Software 함수를 통해 카메라 내부에 트리거를 생성합니다. 이 설정에서는 &#x27;Exposure Mode&#x27;가 &#x27;Timed&#x27;셔터 모드로만 지원됩니다.</p>
+<p class="inline-note-title note">참고사항</p>
 <p>&#x27;Counter And Timer Control&#x27; 카테고리의 &#x27;Counter Selector&#x27;를 &#x27;Line Trigger&#x27; 로 설정하면 카메라로</p>
 <p>입력한 총 유효 트리거 수가 &#x27;Counter Value&#x27;로 리턴 됩니다. 이 카운터는 &#x27;Acquisition Start&#x27; 커맨드에</p>
 <p>의해 0으로 초기화 됩니다.</p>
@@ -2894,7 +2877,7 @@
 <h3 id="4-3-4-transfer-delay">4.3.4 Transfer Delay</h3>
 <p>카메라 내부에서 이미지 전처리(Pre-processing)까지 마친 영상을 전송하는 단계에서 이미지 Packet의 전송 시작 시점을 지연시키는 기능 입니다. 다수의 카메라 영상을 단일 Host에서 입력받는 경우 입력 타이밍을 조정하여 입력 시점을 분산할 수 있습니다.</p>
 <p>파라미터의 입력 값은 Clock 단위 이므로, 시간으로 환산하기 위해 아래 식을 참조 하십시오.</p>
-<p>※ 유의 사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) &#x27;Low-latency Mode Enable&#x27; 파라미터가 &#x27;False&#x27;로 설정된 경우에 한해 설정 가능합니다.</p>
 <p>2) 보다 자세한 타이밍은 &#x27;4.15.1 Low-Latency Mode&#x27; 를 참고해 주시기 바랍니다.</p>
 <h3 id="4-4-exposure-control">4.4 Exposure Control</h3>
@@ -2904,18 +2887,17 @@
 <div class="image-grid">
 <figure class="image-card"><img src="images/pdf-extracted/page27_01_xref171.png" alt="Timing Diagram of Pulse Width Trigger" class="img-full"><figcaption class="caption">&lt;Timing Diagram of Pulse Width Trigger&gt;</figcaption></figure>
 </div>
-<p>※ 유의사항</p>
-<p>&#x27;Trigger Width&#x27; 모드의 실제 노광 시간은 카메라 내부의 &#x27;HD&#x27;신호에 의해 래치되기 때문에 3HD의</p>
-<p>지연이 발생합니다.</p>
+<p class="inline-note-title warning">유의사항</p>
+<p>&#x27;Trigger Width&#x27; 모드의 실제 노광 시간은 카메라 내부의 &#x27;HD&#x27;신호에 의해 래치되기 때문에 3HD의 지연이 발생합니다.</p>
 <h3 id="4-4-2-exposure-time">4.4.2 Exposure Time</h3>
 <p>카메라의 노광시간을 설정합니다. 이 시간은 &#x27;Exposure Mode&#x27;가 &#x27;Timed&#x27;로 설정되어 있는 경우에만 적용됩니다. Freerun Mode에서는 &#x27;Exposure Time&#x27;이 Frame 주기 보다 길어질 경우, Frame Rate이 감소하게 됩니다.</p>
 <p>카메라 내부의 실제 노광 신호는 &#x27;HD&#x27; 타이머에 의해 발생하게 됩니다. 이 &#x27;HD&#x27; 타이머는 수평 방향의 Readout Size와 관련이 있기 때문에, 일반적으로 Image Width가 작을 수록 HD 신호의 주기도 함께 단축 됩니다. 또한 영상 전송 Bandwidth와 관련된 파라미터(ex. Pixel Format, Device Througput 등)를 변경할 경우에도 HD 신호의 주기가 변경 됩니다.</p>
-<p>※ 참고사항</p>
+<p class="inline-note-title note">참고사항</p>
 <p>&#x27;Counter And Timer Control&#x27; 카테고리의 &#x27;Counter Selector&#x27;를 &#x27;Exposure Start&#x27; 또는 &#x27;Exposure End&#x27; 로 설정하면 카메라에서 노광의 시작, 종료 카운트가 &#x27;Counter Value&#x27;로 리턴 됩니다. 이 카운터는 &#x27;Acquisition Start&#x27; 커맨드에 의해 0으로 초기화 됩니다.</p>
 <div class="image-grid">
 <figure class="image-card"><img src="images/pdf-extracted/page28_01_xref174.png" alt="Exposure counter example" class="img-full"></figure>
 </div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) 이 카메라는 Exposure Time과 실제 노광 시간 사이에 오차가 존재합니다. 아래 표에 명기된 시간은 절대적인 시간으로써, 매 프레임마다 노광할 때 추가되는 Exposure Error(Offset) Time 입니다.</p>
 <div class="table-container"><table>
 <thead><tr>
@@ -2983,7 +2965,7 @@
 <figure class="image-card"><img src="images/pdf-extracted/page29_01_xref177.png" alt="Sensor Shutter Mode Rolling" class="img-full"><figcaption class="caption">Sensor Shutter Mode = Rolling</figcaption></figure>
 <figure class="image-card"><img src="images/pdf-extracted/page29_02_xref178.png" alt="Sensor Shutter Mode Global Reset" class="img-full"><figcaption class="caption">Sensor Shutter Mode = Global Reset</figcaption></figure>
 </div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>&#x27;Rolling&#x27; 모드에서의 적절한 Exposure Flash 타이밍은 첫 번째 라인과 마지막 라인이 공통적으로 노광하는 사이 시간 입니다. 이 때에만 전체 이미지 라인에 균일한 조명이 조사될 수 있습니다.</p>
 <h3 id="4-4-4-exposure-auto">4.4.4 Exposure Auto</h3>
 <p>&#x27;Exposure Time&#x27;을 카메라가 자동으로 조정하여 원하는 밝기를 일정하게 유지해 주는 기능입니다. &#x27;ExposureMode&#x27;가 &#x27;Timed&#x27;로 설정되어 있을 때 설정할 수 있습니다. 그리고 &#x27;Auto Exposure Time Lower Limit&#x27;과 &#x27;Auto Exposure Time Upper Limit&#x27;의 사이 시간에서만 &#x27;Exposure Time&#x27;이 변경 됩니다.</p>
@@ -3016,7 +2998,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) Exposure Time이 너무 짧을 경우 조명 깜빡임에 의해 깜빡이는 영상이 출력될 수 있습니다.</p>
 <p>2) 최대 밝기에 도달하기 위해 &#x27;Exposure Time&#x27;이 Frame 주기 보다 길어질 경우 Frame Rate가</p>
 <p>감소할 수 있습니다.</p>
@@ -3133,7 +3115,7 @@
 </div>
 <p>1) Exposure Mode = Trigger Width 일 경우</p>
 <p>2) #3 Trigger 신호는 최소 주기보다 빠르게 입력 되었습니다. 따라서 종전에 전송 중인 #2는 방해 없이 전송을 지속하며, Over trigger 입력된 #3의 영상은 전송하지 않습니다. (F/W 3.4.2.5 이상에 한함)</p>
-<p>※ 참고 사항</p>
+<p class="inline-note-title note">참고사항</p>
 <p>Cam Guide SDK에서는 온전하게 수신된 이미지 Packet에 한해 영상을 display 합니다. 필요에 따라 &#x27;Device Option Control&#x27; 카테고리 중 &#x27;Device Missing Packet Display&#x27; 옵션을 &#x27;On&#x27;으로 변경하여 Over-trigger로 인한 이미지 깨짐 현상을 확인할 수 있습니다.</p>
 <h3 id="4-8-event-control">4.8 Event Control</h3>
 <p>Event 알림은 카메라에서 특정 Event 상황 마다 Host로 Event Packet을 전송하는 기능 입니다. 이미지 전송채널과는 상이한 채널로 Event Packet을 전송하기 때문에 이미지 패킷과 동시 전송이 가능합니다.</p>
@@ -3227,29 +3209,28 @@
 </table></div>
 <h3 id="4-9-1-gain">4.9.1 Gain</h3>
 <p>Gain은 Frame Rate의 저하 없이 영상의 감도를 변경할 수 있는 반면, 이미지 노이즈 또한 함께 증가할 수 있습니다. 카메라의 Gain은 Analog Gain 및 Digital Gain으로 각각 구성되어 있으며, &#x27;Gain Selector&#x27;를 통해 선택할 수 있습니다.</p>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>&#x27;Gain Auto&#x27;를 &#x27;Exposure Auto&#x27; 기능과 일시에 사용할 경우 밝기 변화에 대한 우선 순위</p>
 <ul class="feature-list">
 <li>밝기가 밝아지는 경우 : Exposure 우선 변경, 한계 도달시 Gain 설정.</li>
 <li>밝기가 어두워지는 경우 : Gain 우선 변경, 한계 도달시 Exposure 설정.</li>
 </ul>
 <h3 id="4-9-2-black-level">4.9.2 Black Level</h3>
-<p>&#x27;Black Level&#x27;은 카메라의 감도 Offset을 설정할 수 있는 기능입니다. &#x27;Black Level&#x27;은 Gain과 마찬가지로 Analog Black Level과 Digital Black Level로 구성되어 있으며, &#x27;Black Level Selector&#x27;를 통해 선택할 수 있습니다.</p>
+<p>&#x27;Black Level&#x27;은 카메라의 감도 Offset을 설정할 수 있는 기능입니다 &#x27;Black Level&#x27;은 Gain과 마찬가지로 Analog Black Level과 Digital Black Level로 구성되어 있으며, &#x27;Black Level Selector&#x27;를 통해 선택할 수 있습니다.</p>
 <h3 id="4-9-3-gamma">4.9.3 Gamma</h3>
 <p>Gamma Correction을 조정하기 위한 기능입니다. 카메라 영상의 명암 대비를 보정할 수 있습니다.</p>
 <div class="image-grid">
 <figure class="image-card"><img src="images/pdf-extracted/page35_01_xref196.png" alt="GrayScale Chart" class="img-full"><figcaption class="caption">&lt;ITE &#x27;GrayScale ChartⅡ (y=0.45)&#x27;&gt;</figcaption></figure>
 </div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <ul class="feature-list">
 <li>Gamma Correction 기능은 LUT와 동시에 사용할 수 없습니다. LUT와 Gamma를 일시에 활성화 할 경우, 먼저 활성화 시킨 기능은 자동으로 Disable 상태가 됩니다.</li>
 </ul>
 <h3 id="4-9-4-pattern-noise-removal-mg-a121r-l-9-및-mg-a201r-l-5-모델에-한함">4.9.4 Pattern Noise Removal (MG-A121R/L-9 및 MG-A201R/L-5 모델에 한함)</h3>
 <p>MG-A121R/L-9 모델 및 MG-A201R/L-5 모델의 이미지에 모자이크 패턴과 유사한 노이즈가 나타날 수 있습니다. 사용자의 환경(조명, 렌즈 등)에 대한 set-up이 완료된 이후 모자이크 패턴 또는 특정 컬러 채널간의 감도 불균형 현상이 나타날 경우 자체 보정할 수 있는 기능입니다. &#x27;Pattern Noise Removal&#x27; 커맨드를 통해 즉시 보정이 가능합니다.</p>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) &#x27;Pattern Noise Removal&#x27;을 수행하기 위해 이미지를 Grab 해야 합니다.</p>
-<p>2) 커맨드 입력을 통해 영상을 보정한 뒤, &#x27;Userset Save&#x27; 커맨드를 통해 카메라에 보정 값을 저장해야</p>
-<p>합니다.</p>
+<p>2) 커맨드 입력을 통해 영상을 보정한 뒤, &#x27;Userset Save&#x27; 커맨드를 통해 카메라에 보정 값을 저장해야 합니다.</p>
 <h3 id="4-9-5-noise-reduction-filter">4.9.5 Noise Reduction Filter</h3>
 <p>노이즈 필터를 통해 영상 노이즈를 감쇄할 수 있는 기능입니다. 활성화시 다음 Frame부터 반영되며 영상의 Sharpness가 다소 저하될 수 있습니다.</p>
 <div class="image-grid noise-filter-grid">
@@ -3282,7 +3263,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) 특정한 밝기 범위를 벗어난 Pixel은 노이즈로 판단합니다. 또한 특정 Color에 심하게 치우친 경우에도 Auto White Balance 연산에서 제외 됩니다. 자세한 조건은 아래 기준을 참고하십시오.</p>
 <p>1. |R-Y| &lt; 160DN</p>
 <p>2. |B-Y| &lt; 160DN</p>
@@ -3376,7 +3357,7 @@
 </tbody>
 </table></div>
 <figure class="lut-figure"><img src="images/pdf-extracted/page38_01_xref205.png" alt="LUT example graph"></figure>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <ul class="feature-list">
 <li>LUT 기능은 Gamma Control 과 동시에 사용할 수 없습니다. LUT와 Gamma를 일시에 활성화 할 경우, 먼저 활성화 시킨 기능은 자동으로 Disable 상태가 됩니다.</li>
 </ul>
@@ -3426,7 +3407,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <ul class="feature-list">
 <li>보정 이후, 반드시 &#x27;Userset Save&#x27; 커맨드를 입력해야 카메라에 저장해야 합니다.</li>
 </ul>
@@ -3595,7 +3576,7 @@
 <img src="images/pdf-extracted/page43_02_xref221.png" alt="Packet delay distribution in low-latency mode">
 </figure>
 </div>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>1) &#x27;Low-latency Mode Enable&#x27; 파라미터는 카메라의 재시작시 반영 됩니다. 따라서 모드 변경시 &#x27;Userset Save&#x27; 커맨드 이후 재부팅이 필요합니다.</p>
 <p>2) &#x27;Transfer Delay&#x27; 기능은 &#x27;Low-latency Mode Enable&#x27; 이 &#x27;False&#x27; 일 때에만 설정 가능합니다.</p>
 <h3 id="4-15-2-gev-heartbeat-timeout">4.15.2 Gev Heartbeat Timeout</h3>
@@ -3608,7 +3589,7 @@
 <p>(단, n은 패킷 사이즈가 점보 프레임을 초과하지 않는 범위의 값).</p>
 <h3 id="4-15-5-gev-scpd">4.15.5 Gev SCPD</h3>
 <p>카메라의 패킷 사이의 지연 시간을 추가하는 기능입니다. Packet Delay를 적용할 경우 패킷 간의 인터벌이 늘어나며 전송 대역폭이 낮아지는 효과가 있습니다. 설정 값은 Clock 단위로써 시간으로의 환산식은 다음과 같습니다.</p>
-<p>※ 유의사항</p>
+<p class="inline-note-title warning">유의사항</p>
 <p>한 프레임 내에서 지연된 총 시간이 프레임 주기를 넘어설 경우 다음 프레임은 누락됩니다. 따라서 Frame Rate 손실이 발생합니다.</p>
 </section>
 <section id="appearance">
